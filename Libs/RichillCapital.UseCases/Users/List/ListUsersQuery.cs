@@ -2,5 +2,5 @@
 
 namespace RichillCapital.UseCases.Users.List;
 
-public sealed record ListUsersQuery() : 
+public sealed record ListUsersQuery() :
     IQuery<ErrorOr<PagedDto<UserDto>>>;
