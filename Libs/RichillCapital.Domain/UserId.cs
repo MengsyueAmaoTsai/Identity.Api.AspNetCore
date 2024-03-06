@@ -9,9 +9,9 @@ public class UserId : SingleValueObject<string>
     {
     }
 
-    public static ErrorOr<UserId> From(string value)
+    public static Result<UserId> From(string value)
     {
         return new UserId(value)
-            .ToErrorOr();
+            .ToResult();
     }
 }
