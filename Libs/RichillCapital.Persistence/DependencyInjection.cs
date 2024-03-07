@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
+
 using RichillCapital.Domain;
 using RichillCapital.SharedKernel.Specifications.Evaluators;
 
@@ -13,6 +14,8 @@ public static class DependencyInjection
         services.AddPersistenceOptions();
 
         services.AddMsSql();
+
+        services.AddSpecification();
 
         return services;
     }
@@ -30,23 +33,47 @@ public static class DependencyInjection
 
     private static IServiceCollection AddMsSql(this IServiceCollection services)
     {
-        services.AddDbContext<MsSqlEfCoreDbContext>((servicesProvider, options) =>
+        services.AddDbContext<MsSqlEfCoreDbContext>((serviceProvider, options) =>
         {
-            var dbOptions = servicesProvider
-                .GetRequiredService<IOptions<PersistenceOptions>>()
-                .Value.MsSqlOptions;
+            var sqlServerOptions = serviceProvider
+                .GetRequiredService<IOptions<PersistenceOptions>>().Value;
 
-            options.UseSqlServer(dbOptions.ConnectionString);
+            options.UseSqlServer(sqlServerOptions.MsSqlOptions.ConnectionString, options =>
+            {
+                options.EnableRetryOnFailure(3);
+                options.CommandTimeout(30);
+            });
+
+            options.EnableDetailedErrors(true);
+            options.EnableSensitiveDataLogging(true);
         });
 
-        services.AddScoped(typeof(IRepository<>), typeof(MsSqlEfCoreRepository<>));
-        services.AddScoped(typeof(IReadOnlyRepository<>), typeof(MsSqlEfCoreRepository<>));
+        services.AddRepository();
+        services.AddUnitOfWork();
 
-        services.AddScoped<IUnitOfWork>(serviceProvider =>
-                serviceProvider.GetRequiredService<MsSqlEfCoreDbContext>());
-
-        services.AddScoped<IInMemorySpecificationEvaluator, InMemorySpecificationEvaluator>();
         return services;
     }
 
+    private static IServiceCollection AddRepository(this IServiceCollection services)
+    {
+        services.AddScoped(typeof(IRepository<>), typeof(MsSqlEfCoreRepository<>));
+        services.AddScoped(typeof(IReadOnlyRepository<>), typeof(MsSqlEfCoreRepository<>));
+
+        return services;
+    }
+
+    private static IServiceCollection AddUnitOfWork(this IServiceCollection services)
+    {
+        services.AddScoped<IUnitOfWork>(serviceProvider =>
+                serviceProvider.GetRequiredService<MsSqlEfCoreDbContext>());
+
+        return services;
+    }
+
+    private static IServiceCollection AddSpecification(this IServiceCollection services)
+    {
+        services.AddScoped<IInMemorySpecificationEvaluator, InMemorySpecificationEvaluator>();
+
+        return services;
+    }
 }

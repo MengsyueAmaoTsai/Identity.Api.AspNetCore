@@ -31,8 +31,6 @@ services:
     environment:
       - ACCEPT_EULA=Y
       - SA_PASSWORD=Pa55w0rd!
-    volumes:
-      - ./.containers/mssql:/var/opt/mssql
       
   # redis:
   #   image: redis:latest
