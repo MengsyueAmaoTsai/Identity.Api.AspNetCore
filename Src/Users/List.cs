@@ -8,10 +8,10 @@ namespace RichillCapital.Identity.Api.Endpoints.Users;
 
 public sealed class List(IMediator _mediator) : AsyncEndpoint
     .WithRequest<ListUsersRequest>
-    .WithActionResult<ListUsersResponse>
+    .WithActionResult<PagedListResponse<UserResponse>>
 {
     [HttpGet("/api/users")]
-    public override async Task<ActionResult<ListUsersResponse>> HandleAsync(
+    public override async Task<ActionResult<PagedListResponse<UserResponse>>> HandleAsync(
         [FromQuery] ListUsersRequest request,
         CancellationToken cancellationToken = default)
     {
@@ -22,7 +22,13 @@ public sealed class List(IMediator _mediator) : AsyncEndpoint
         var result = errorOr.Value;
         var items = result.Items.Select(item => new UserResponse(item.Id, item.Email, item.Name));
 
-        return new ListUsersResponse(items);
+        return new PagedListResponse<UserResponse>(
+            items,
+            result.Page,
+            result.PageSize,
+            result.TotalCount,
+            result.HasNextPage,
+            result.HasPreviousPage);
     }
 
 }

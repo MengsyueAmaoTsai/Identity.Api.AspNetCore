@@ -16,7 +16,7 @@ internal sealed class ListBotsQueryHandler(
         var items = bots
             .Select(BotDto.From);
 
-        return new PagedDto<BotDto>(items)
+        return new PagedDto<BotDto>(items, 0, 0)
             .ToErrorOr();
     }
 }

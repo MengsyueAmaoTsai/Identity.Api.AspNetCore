@@ -21,7 +21,7 @@ internal sealed class ListUsersQueryHandler(
 
         var items = MapUsers(users);
 
-        return new PagedDto<UserDto>(items)
+        return new PagedDto<UserDto>(items, query.Page, query.PageSize)
             .ToErrorOr();
     }
 
