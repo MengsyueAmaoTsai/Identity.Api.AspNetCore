@@ -12,6 +12,7 @@ public static class WebApplicationExtensions
 
         builder.Services.AddUseCases();
         builder.Services.AddPersistence();
+        builder.Services.AddApi();
 
         return builder;
     }
