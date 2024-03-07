@@ -34,7 +34,10 @@ public sealed class Bot : Entity<BotId>
     {
         var now = DateTimeOffset.UtcNow;
 
-        return new Bot(id, name, description, now, now)
-            .ToErrorOr();
+        var bot = new Bot(id, name, description, now, now);
+
+        bot.RegisterDomainEvent(new BotCreatedDomainEvent(bot.Id));
+
+        return bot.ToErrorOr();
     }
 }
