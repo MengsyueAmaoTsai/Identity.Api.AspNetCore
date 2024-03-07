@@ -1,16 +1,12 @@
-var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
-builder.Services.AddControllers();
+using RichillCapital.Identity.Api;
 
-var app = builder.Build();
+var app = WebApplication
+    .CreateBuilder(args)
+    .ConfigureServices()
+    .Build();
 
-app.UseSwagger();
-app.UseSwaggerUI();
-app.UseHttpsRedirection();
-app.MapControllers();
-
-await app.RunAsync();
+await (await app.ConfigurePipelinesAsync())
+    .RunAsync();
 
 public partial class Program;

@@ -2,7 +2,7 @@ using Microsoft.Extensions.DependencyInjection;
 
 namespace RichillCapital.Persistence;
 
-public static class Seeds
+public static class SeedProvider
 {
     public static void Populate(IServiceProvider serviceProvider)
     {
