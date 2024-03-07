@@ -14,10 +14,7 @@ internal sealed class ListBotsQueryHandler(
         var bots = await _botRepository.ListAsync(cancellationToken);
 
         var items = bots
-            .Select(bot => new BotDto(
-                bot.Id.Value,
-                bot.Name.Value,
-                bot.Description.Value));
+            .Select(BotDto.From);
 
         return new PagedDto<BotDto>(items)
             .ToErrorOr();

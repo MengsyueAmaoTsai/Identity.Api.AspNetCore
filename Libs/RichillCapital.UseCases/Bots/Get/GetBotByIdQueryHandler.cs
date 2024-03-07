@@ -26,17 +26,6 @@ internal sealed class GetBotByIdQueryHandler(
             return Error.NotFound("Bot not found").ToErrorOr<BotDto>();
         }
 
-        var bot = maybeBot.Value;
-
-        var botDto = new BotDto(
-            bot.Id.Value,
-            bot.Name.Value,
-            bot.Description.Value,
-            bot.Side.Name,
-            bot.Platform.Name,
-            bot.CreatedAt,
-            bot.UpdatedAt);
-
-        return botDto.ToErrorOr();
+        return BotDto.From(maybeBot.Value).ToErrorOr();
     }
 }
