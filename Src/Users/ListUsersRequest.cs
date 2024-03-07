@@ -1,4 +1,4 @@
-﻿namespace RichillCapital.Identity.Api.Users
+﻿namespace RichillCapital.Identity.Api.Endpoints.Users
 {
     public class ListUsersRequest
     {

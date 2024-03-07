@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using RichillCapital.SharedKernel.Monads;
 using RichillCapital.UseCases.Users.Get;
 
-namespace RichillCapital.Identity.Api.Users;
+namespace RichillCapital.Identity.Api.Endpoints.Users;
 
 public sealed class Get(IMediator _mediator) : AsyncEndpoint
     .WithRequest<GetUserByIdRequest>
@@ -11,7 +11,7 @@ public sealed class Get(IMediator _mediator) : AsyncEndpoint
 {
     [HttpGet("/api/users/{userId}")]
     public override async Task<ActionResult<UserResponse>> HandleAsync(
-        [FromRoute] GetUserByIdRequest request, 
+        [FromRoute] GetUserByIdRequest request,
         CancellationToken cancellationToken = default)
     {
         // 1. Map request to query

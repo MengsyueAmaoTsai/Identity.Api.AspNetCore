@@ -2,7 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using RichillCapital.UseCases.Users.List;
 
-namespace RichillCapital.Identity.Api.Users;
+namespace RichillCapital.Identity.Api.Endpoints.Users;
 
 public sealed class List(IMediator _mediator) : AsyncEndpoint
     .WithRequest<ListUsersRequest>
