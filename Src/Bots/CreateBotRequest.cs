@@ -16,4 +16,14 @@ public sealed record CreateBotRequest
     /// The description of the bot.
     /// </summary>
     public string Description { get; init; } = string.Empty;
+
+    /// <summary>
+    /// The side of the bot.
+    /// </summary>
+    public string Side { get; init; } = string.Empty;
+
+    /// <summary>
+    /// The platform of the bot.
+    /// </summary>
+    public string Platform { get; init; } = string.Empty;
 }

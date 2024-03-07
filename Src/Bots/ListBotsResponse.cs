@@ -1,3 +1,3 @@
 namespace RichillCapital.Identity.Api.Endpoints.Bots;
 
-public class ListBotsResponse();
+public sealed record ListBotsResponse(IEnumerable<BotResponse> Bots);
