@@ -2,7 +2,7 @@ using RichillCapital.Domain;
 
 namespace RichillCapital.UseCases.Bots;
 
-internal sealed record BotDto(
+public sealed record BotDto(
     string Id,
     string Name,
     string Description,

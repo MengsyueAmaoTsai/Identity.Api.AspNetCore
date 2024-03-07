@@ -1,3 +1,3 @@
 ﻿namespace RichillCapital.UseCases;
 
-public sealed record PagedDto<T>(IEnumerable<T> Items);
+public sealed record class PagedDto<T>(IEnumerable<T> Items);
