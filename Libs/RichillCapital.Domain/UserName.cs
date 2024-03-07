@@ -12,6 +12,9 @@ public sealed class UserName : SingleValueObject<string>
     {
     }
 
-    public static Result<UserName> From(string value) =>
-        throw new NotImplementedException();
+    public static Result<UserName> From(string value) => value
+        .ToResult()
+        .Ensure(value => !string.IsNullOrWhiteSpace(value), Error.Invalid("User name should not be empty"))
+        .Ensure(value => value.Length <= MaxLength, Error.Invalid($"User name should not be more than {MaxLength} characters"))
+        .Then(value => new UserName(value));
 }

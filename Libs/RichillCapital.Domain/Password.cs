@@ -12,6 +12,7 @@ public sealed class Password : SingleValueObject<string>
     {
     }
 
-    public static ErrorOr<Password> From(string value) =>
-        throw new NotFiniteNumberException();
+    public static Result<Password> From(string value) => value
+        .ToResult()
+        .Then(value => new Password(value));
 }

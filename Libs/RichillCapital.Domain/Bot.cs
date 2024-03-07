@@ -5,7 +5,7 @@ namespace RichillCapital.Domain;
 
 public sealed class Bot : Entity<BotId>
 {
-    private readonly List<Signal> _signals = new();
+    private readonly List<Signal> _signals = [];
 
     private Bot(
         BotId id,

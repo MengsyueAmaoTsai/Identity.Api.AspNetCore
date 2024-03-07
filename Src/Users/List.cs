@@ -1,5 +1,7 @@
 ﻿using MediatR;
+
 using Microsoft.AspNetCore.Mvc;
+
 using RichillCapital.UseCases.Users.List;
 
 namespace RichillCapital.Identity.Api.Endpoints.Users;
@@ -13,7 +15,7 @@ public sealed class List(IMediator _mediator) : AsyncEndpoint
         [FromQuery] ListUsersRequest request,
         CancellationToken cancellationToken = default)
     {
-        var query = new ListUsersQuery();
+        var query = new ListUsersQuery(request.Page, request.PageSize);
 
         var errorOr = await _mediator.Send(query, cancellationToken);
 

@@ -1,4 +1,10 @@
 {
   "dotnet.defaultSolution": "./RichillCapital.Identity.Api.sln",
-  "cSpell.words": ["datetimeoffset", "Mediat", "Quantower", "Serilog"]
+  "cSpell.words": [
+    "datetimeoffset",
+    "Mediat",
+    "Quantower",
+    "Serilog",
+    "Testcontainers"
+  ]
 }

@@ -12,5 +12,10 @@ public sealed class Email : SingleValueObject<string>
     {
     }
 
-    public static Result<Email> From(string value) => throw new NotImplementedException();
+    public static Result<Email> From(string value) => value
+        .ToResult()
+        .Ensure(value => !string.IsNullOrWhiteSpace(value), Error.Invalid("Email should not be empty"))
+        .Ensure(value => value.Length <= MaxLength, Error.Invalid($"Email should not be more than {MaxLength} characters"))
+        .Ensure(value => new Email(value).Value.Contains('@'), Error.Invalid("Email should be in valid format"))
+        .Then(value => new Email(value));
 }
