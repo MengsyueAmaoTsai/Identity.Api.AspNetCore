@@ -5,6 +5,8 @@ namespace RichillCapital.Domain;
 
 public sealed class BotId : SingleValueObject<string>
 {
+    public const int MaxLength = 100;
+
     private BotId(string value)
         : base(value)
     {
