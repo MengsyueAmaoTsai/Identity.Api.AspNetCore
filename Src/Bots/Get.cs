@@ -1,8 +1,9 @@
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using RichillCapital.Contracts;
-using RichillCapital.Identity.Api;
 using RichillCapital.UseCases.GetBotById;
+
+namespace RichillCapital.Identity.Api.Bots;
 
 public sealed class Get(IMediator _mediator) : AsyncEndpoint
     .WithRequest<GetBotByIdRequest>

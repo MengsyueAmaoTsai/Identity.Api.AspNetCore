@@ -1,8 +1,9 @@
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using RichillCapital.Contracts;
-using RichillCapital.Identity.Api;
 using RichillCapital.UseCases.DeleteBot;
+
+namespace RichillCapital.Identity.Api.Bots;
 
 public sealed class Delete(IMediator _mediator) : AsyncEndpoint
     .WithRequest<DeleteBotRequest>

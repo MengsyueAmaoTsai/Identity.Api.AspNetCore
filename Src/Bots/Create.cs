@@ -1,8 +1,9 @@
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using RichillCapital.Contracts;
-using RichillCapital.Identity.Api;
 using RichillCapital.UseCases.CreateBot;
+
+namespace RichillCapital.Identity.Api.Bots;
 
 public sealed class Create(IMediator _mediator) : AsyncEndpoint
     .WithRequest<CreateBotRequest>

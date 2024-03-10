@@ -1,9 +1,9 @@
-
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using RichillCapital.Contracts;
-using RichillCapital.Identity.Api;
 using RichillCapital.UseCases.ListBots;
+
+namespace RichillCapital.Identity.Api.Bots;
 
 public sealed class List(IMediator _mediator) : AsyncEndpoint
     .WithRequest<ListBotsRequest>
