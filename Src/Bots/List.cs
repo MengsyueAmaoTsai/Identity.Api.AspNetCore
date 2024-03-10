@@ -31,7 +31,7 @@ public sealed class List(IMediator _mediator) : AsyncEndpoint
             bot.Side,
             bot.Platform)).ToList();
 
-        var listBotsResponse = new ListBotsResponse(bots);
+        var listBotsResponse = new ListResponse<BotResponse>(bots);
 
         return Ok(listBotsResponse);
     }

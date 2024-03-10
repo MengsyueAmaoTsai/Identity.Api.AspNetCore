@@ -23,7 +23,7 @@ public sealed class ListBotsTests(AcceptanceTestsWebApplicationFactory factory) 
 
         // Act
         var (response, result) = await Client
-            .GetAndDeserializeAsync<ListBotsResponse>(ApiRoutes.V1.Bots.List);
+            .GetAndDeserializeAsync<ListResponse<BotResponse>>(ApiRoutes.V1.Bots.List);
 
         // Assert
         response.StatusCode.Should().Be(HttpStatusCode.OK);
