@@ -1,0 +1,60 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RichillCapital.Identity.Api", "RichillCapital.Identity.Api.csproj", "{89563AA7-0722-4A1B-849C-F0A09CD21AC4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RichillCapital.Identity.Api.AcceptanceTests", "Tests\RichillCapital.Identity.Api.AcceptanceTests\RichillCapital.Identity.Api.AcceptanceTests.csproj", "{A022CD16-3FF9-4CC5-8376-EBDB5583A474}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{E003808D-330B-4B2F-A6C9-A0D7674F8E95}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RichillCapital.Contracts", "Libs\RichillCapital.Contracts\RichillCapital.Contracts.csproj", "{09D9B0C1-3653-42F9-AF41-F9B9A4A8859A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RichillCapital.Persistence", "Libs\RichillCapital.Persistence\RichillCapital.Persistence.csproj", "{40412ADB-D42F-495D-B4C8-7D5CF9F4ABF4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RichillCapital.Domain", "Libs\RichillCapital.Domain\RichillCapital.Domain.csproj", "{286E5D1F-4A03-4010-BDFD-65056128EB6C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RichillCapital.UseCases", "Libs\RichillCapital.UseCases\RichillCapital.UseCases.csproj", "{F0779879-C77A-454E-A289-2CE6EEC2E154}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{89563AA7-0722-4A1B-849C-F0A09CD21AC4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{89563AA7-0722-4A1B-849C-F0A09CD21AC4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{89563AA7-0722-4A1B-849C-F0A09CD21AC4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{89563AA7-0722-4A1B-849C-F0A09CD21AC4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A022CD16-3FF9-4CC5-8376-EBDB5583A474}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A022CD16-3FF9-4CC5-8376-EBDB5583A474}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A022CD16-3FF9-4CC5-8376-EBDB5583A474}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A022CD16-3FF9-4CC5-8376-EBDB5583A474}.Release|Any CPU.Build.0 = Release|Any CPU
+		{09D9B0C1-3653-42F9-AF41-F9B9A4A8859A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{09D9B0C1-3653-42F9-AF41-F9B9A4A8859A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{09D9B0C1-3653-42F9-AF41-F9B9A4A8859A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{09D9B0C1-3653-42F9-AF41-F9B9A4A8859A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{40412ADB-D42F-495D-B4C8-7D5CF9F4ABF4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{40412ADB-D42F-495D-B4C8-7D5CF9F4ABF4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{40412ADB-D42F-495D-B4C8-7D5CF9F4ABF4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{40412ADB-D42F-495D-B4C8-7D5CF9F4ABF4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{286E5D1F-4A03-4010-BDFD-65056128EB6C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{286E5D1F-4A03-4010-BDFD-65056128EB6C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{286E5D1F-4A03-4010-BDFD-65056128EB6C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{286E5D1F-4A03-4010-BDFD-65056128EB6C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F0779879-C77A-454E-A289-2CE6EEC2E154}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F0779879-C77A-454E-A289-2CE6EEC2E154}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F0779879-C77A-454E-A289-2CE6EEC2E154}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F0779879-C77A-454E-A289-2CE6EEC2E154}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{A022CD16-3FF9-4CC5-8376-EBDB5583A474} = {E003808D-330B-4B2F-A6C9-A0D7674F8E95}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {925A3FC3-D784-405F-8C20-78F29851713F}
+	EndGlobalSection
+EndGlobal
