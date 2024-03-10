@@ -18,7 +18,7 @@ internal sealed class BotConfiguration : IEntityTypeConfiguration<Bot>
             .HasMaxLength(BotId.MaxLength)
             .HasConversion(
                 id => id.Value,
-                value => new BotId(value))
+                value => BotId.From(value).Value)
             .IsRequired();
 
         builder

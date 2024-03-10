@@ -15,21 +15,19 @@ public sealed class ListBotsTests(AcceptanceTestsWebApplicationFactory factory) 
         // Arrange
         var expectedBots = Seed.Bots
             .Select(bot => new BotResponse(
-                bot.Id.Value, 
-                bot.Name.Value, 
+                bot.Id.Value,
+                bot.Name.Value,
                 bot.Description.Value,
                 bot.Symbols.Select(symbol => symbol.Value).ToArray(),
                 bot.Side.Name,
                 bot.Platform.Name));
 
         // Act
-        var response = await Client.GetAsync(ApiRoutes.V1.Bots.List);
-        
-        var result = await response.Content.ReadFromJsonAsync<ListBotsResponse>();
+        var (response, result) = await Client
+            .GetAndDeserializeAsync<ListBotsResponse>(ApiRoutes.V1.Bots.List);
 
         // Assert
         response.StatusCode.Should().Be(HttpStatusCode.OK);
-
         result!.Items.Should().BeEquivalentTo(expectedBots);
     }
 }

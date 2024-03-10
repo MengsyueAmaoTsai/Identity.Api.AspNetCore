@@ -18,10 +18,10 @@ public static class Seed
 
         context.SaveChanges();
     }
-    
-    private static Bot CreateBot(string id, string name, string description, string[] symbols, string side, string platform) => 
-        new Bot(
-            new BotId(id),
+
+    private static Bot CreateBot(string id, string name, string description, string[] symbols, string side, string platform) =>
+        new(
+            BotId.From(id).Value,
             new BotName(name),
             new BotDescription(description),
             symbols.Select(symbol => new Symbol(symbol)).ToArray(),

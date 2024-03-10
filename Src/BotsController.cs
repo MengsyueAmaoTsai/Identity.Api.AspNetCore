@@ -1,7 +1,10 @@
 ﻿using MediatR;
+using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
 using RichillCapital.Contracts;
 using RichillCapital.Persistence;
+using RichillCapital.SharedKernel;
+using RichillCapital.UseCases.GetBotById;
 using RichillCapital.UseCases.ListBots;
 
 namespace RichillCapital.Identity.Api;
@@ -26,7 +29,41 @@ public sealed class BotsController(IMediator _mediator) : ControllerBase
                 bot.Platform.Name));
 
         var listBotsResponse = new ListBotsResponse(bots);
-        
+
         return Ok(listBotsResponse);
+    }
+
+    [HttpGet(ApiRoutes.V1.Bots.Get)]
+    public async Task<IActionResult> Get(
+        [FromRoute(Name = "botId")] string botId, CancellationToken cancellationToken = default)
+    {
+        var query = new GetBotByIdQuery(botId);
+
+        var result = await _mediator.Send(query, cancellationToken);
+
+        if (result.IsFailure)
+        {
+            return HandleError(result.Error);
+        }
+
+        var botResponse = new BotResponse(
+            result.Value.Id,
+            result.Value.Name,
+            result.Value.Description,
+            result.Value.Symbols,
+            result.Value.Side,
+            result.Value.Platform);
+
+        return Ok(botResponse);
+    }
+
+    private ActionResult HandleError(Error error)
+    {
+        return error.Type switch
+        {
+            ErrorType.Validation => BadRequest(error),
+            ErrorType.NotFound => NotFound(error),
+            _ => BadRequest(error)
+        };
     }
 }
