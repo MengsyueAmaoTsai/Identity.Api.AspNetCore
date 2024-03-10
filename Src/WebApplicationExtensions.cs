@@ -3,7 +3,7 @@ using RichillCapital.UseCases;
 
 namespace RichillCapital.Identity.Api;
 
-public static class WebApplicationExtensions
+internal static class WebApplicationExtensions
 {
     internal static WebApplicationBuilder ConfigureServices(this WebApplicationBuilder builder)
     {
