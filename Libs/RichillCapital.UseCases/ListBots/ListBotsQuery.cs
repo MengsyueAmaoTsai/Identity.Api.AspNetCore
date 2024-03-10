@@ -2,7 +2,5 @@
 
 namespace RichillCapital.UseCases.ListBots;
 
-public class ListBotsQuery : 
+public class ListBotsQuery :
     IQuery<Result<ListDto<BotDto>>>;
-
-internal record ListDto<T>(IEnumerable<T> Items);
