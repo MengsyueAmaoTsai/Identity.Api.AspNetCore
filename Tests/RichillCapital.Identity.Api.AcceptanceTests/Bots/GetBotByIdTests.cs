@@ -1,8 +1,8 @@
-
 using System.Net;
 using FluentAssertions;
 using RichillCapital.Contracts;
-using RichillCapital.Identity.Api.AcceptanceTests;
+
+namespace RichillCapital.Identity.Api.AcceptanceTests.Bots;
 
 public sealed class GetBotByIdTests(AcceptanceTestsWebApplicationFactory factory) :
     BotsAcceptanceTests(factory)
@@ -24,7 +24,7 @@ public sealed class GetBotByIdTests(AcceptanceTestsWebApplicationFactory factory
     {
         // Arrange & Act
         var (response, result) = await Client
-            .GetAndDeserializeAsync<BotResponse>(ApiRoutes.V1.Bots.Get.Replace("{botId}", NotFoundId));
+            .GetAndDeserializeAsync<BotResponse>(ApiRoutes.V1.Bots.Get.Replace("{botId}", NewId1));
 
         // Assert
         response.StatusCode.Should().Be(HttpStatusCode.NotFound);

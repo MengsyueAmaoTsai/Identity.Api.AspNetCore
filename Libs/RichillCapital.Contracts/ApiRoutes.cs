@@ -13,6 +13,7 @@ public static class ApiRoutes
             private const string Base = $"{VersionBase}/bots";
 
             public const string List = Base;
+            public const string Create = Base;
             public const string Get = $"{Base}/{{botId}}";
             public const string Delete = $"{Base}/{{botId}}";
         }

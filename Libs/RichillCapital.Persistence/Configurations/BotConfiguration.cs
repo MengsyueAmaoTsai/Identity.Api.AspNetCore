@@ -27,7 +27,8 @@ internal sealed class BotConfiguration : IEntityTypeConfiguration<Bot>
             .HasMaxLength(BotName.MaxLength)
             .HasConversion(
                 name => name.Value,
-                value => new BotName(value));
+                value => BotName.From(value).Value)
+            .IsRequired();
 
         builder
             .Property(bot => bot.Description)
@@ -44,7 +45,7 @@ internal sealed class BotConfiguration : IEntityTypeConfiguration<Bot>
                 symbols => string.Join(',', symbols.Select(symbol => symbol.Value)),
                 value => value
                     .Split(',', StringSplitOptions.RemoveEmptyEntries)
-                    .Select(symbol => new Symbol(symbol))
+                    .Select(symbol => Symbol.From(symbol).Value)
                     .ToArray());
 
         builder

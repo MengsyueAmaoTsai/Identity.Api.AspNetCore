@@ -24,7 +24,7 @@ public sealed class DeleteBotTests(AcceptanceTestsWebApplicationFactory factory)
     {
         // Arrange & Act
         var (response, result) = await Client
-            .GetAndDeserializeAsync<BotResponse>(ApiRoutes.V1.Bots.Get.Replace("{botId}", NotFoundId));
+            .GetAndDeserializeAsync<BotResponse>(ApiRoutes.V1.Bots.Get.Replace("{botId}", NewId1));
 
         // Assert
         response.StatusCode.Should().Be(HttpStatusCode.NotFound);

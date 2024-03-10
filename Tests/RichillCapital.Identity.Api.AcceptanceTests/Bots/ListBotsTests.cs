@@ -2,7 +2,6 @@
 using RichillCapital.Contracts;
 using RichillCapital.Persistence;
 using System.Net;
-using System.Net.Http.Json;
 
 namespace RichillCapital.Identity.Api.AcceptanceTests.Bots;
 

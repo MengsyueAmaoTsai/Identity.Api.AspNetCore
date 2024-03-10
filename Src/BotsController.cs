@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using RichillCapital.Contracts;
 using RichillCapital.Persistence;
 using RichillCapital.SharedKernel;
+using RichillCapital.UseCases.CreateBot;
 using RichillCapital.UseCases.DeleteBot;
 using RichillCapital.UseCases.GetBotById;
 using RichillCapital.UseCases.ListBots;
@@ -73,12 +74,34 @@ public sealed class BotsController(IMediator _mediator) : ControllerBase
         return NoContent();
     }
 
+    [HttpPost(ApiRoutes.V1.Bots.Create)]
+    public async Task<IActionResult> Create([FromBody] CreateBotRequest request, CancellationToken cancellationToken = default)
+    {
+        var command = new CreateBotCommand(
+            request.Id,
+            request.Name,
+            request.Description,
+            request.Symbols,
+            request.Side,
+            request.Platform);
+
+        var result = await _mediator.Send(command, cancellationToken);
+
+        if (result.IsFailure)
+        {
+            return HandleError(result.Error);
+        }
+
+        return Created(ApiRoutes.V1.Bots.Get.Replace("{botId}", result.Value.Value), null);
+    }
+
     private ActionResult HandleError(Error error)
     {
         return error.Type switch
         {
             ErrorType.Validation => BadRequest(error),
             ErrorType.NotFound => NotFound(error),
+            ErrorType.Conflict => Conflict(error),
             _ => BadRequest(error)
         };
     }

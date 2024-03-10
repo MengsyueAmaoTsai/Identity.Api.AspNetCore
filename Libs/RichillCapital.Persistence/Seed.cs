@@ -22,9 +22,9 @@ public static class Seed
     private static Bot CreateBot(string id, string name, string description, string[] symbols, string side, string platform) =>
         new(
             BotId.From(id).Value,
-            new BotName(name),
+            BotName.From(name).Value,
             new BotDescription(description),
-            symbols.Select(symbol => new Symbol(symbol)).ToArray(),
+            symbols.Select(symbol => Symbol.From(symbol).Value).ToArray(),
             Side.FromName(side).Value,
             TradingPlatform.FromName(platform).Value);
 }
