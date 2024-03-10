@@ -4,7 +4,9 @@ namespace RichillCapital.Domain;
 
 public sealed class BotName : SingleValueObject<string>
 {
-    public BotName(string value) 
+    public const int MaxLength = 100;
+
+    public BotName(string value)
         : base(value)
     {
     }

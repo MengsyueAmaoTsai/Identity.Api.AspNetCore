@@ -1,4 +1,11 @@
-var builder = WebApplication.CreateBuilder(args);
+using RichillCapital.Persistence;
+using RichillCapital.UseCases;
+
+var builder = WebApplication
+    .CreateBuilder(args);
+
+builder.Services.AddUseCases();
+builder.Services.AddPersistence();
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
@@ -8,13 +15,15 @@ var app = builder.Build();
 
 if (app.Environment.IsDevelopment())
 {
-    app.UseSwagger();
-    app.UseSwaggerUI();
 }
 
+app.UseSwagger();
+app.UseSwaggerUI();
+
 app.UseHttpsRedirection();
+
 app.MapControllers();
 
-app.Run();
+await app.RunAsync();
 
 public partial class Program;
