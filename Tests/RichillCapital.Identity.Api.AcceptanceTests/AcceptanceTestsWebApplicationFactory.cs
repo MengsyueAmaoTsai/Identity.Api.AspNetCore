@@ -8,7 +8,7 @@ using Testcontainers.MsSql;
 
 namespace RichillCapital.Identity.Api.AcceptanceTests;
 
-public sealed class AcceptanceTestsWebApplicationFactory : 
+public sealed class AcceptanceTestsWebApplicationFactory :
     WebApplicationFactory<Program>,
     IAsyncLifetime
 {
