@@ -1,6 +1,27 @@
 @Localhost = https://127.0.0.1:10000
 @Route = /api/v1/bots
+@BotId = TV-BINANCE:ETHUSDT.P-M15-PL-0001
 
 ### List bots
 GET {{Localhost}}{{Route}}
 Accept: application/json
+
+### Get by id
+GET {{Localhost}}{{Route}}/{{BotId}}
+Accept: application/json
+
+### Delete by id
+DELETE {{Localhost}}{{Route}}/{{BotId}}
+
+### Create bot
+POST {{Localhost}}{{Route}}
+Content-Type: application/json
+
+{
+  "id": "TV-BINANCE:ETHUSDT.P-M15-PL-0001",
+  "name": "Double CCI Trend following",
+  "description": "test http",
+  "symbols": ["BINANCE:ETHUSDT.P", "BINANCE:BTCUSDT.P"],
+  "side": "Short",
+  "platform": "TradingView"
+}

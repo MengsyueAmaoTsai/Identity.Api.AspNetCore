@@ -1,3 +1,4 @@
+using RichillCapital.Identity.Api;
 using RichillCapital.Persistence;
 using RichillCapital.UseCases;
 
@@ -15,6 +16,7 @@ var app = builder.Build();
 
 if (app.Environment.IsDevelopment())
 {
+    app.PopulateSeed();
 }
 
 app.UseSwagger();

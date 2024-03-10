@@ -91,8 +91,7 @@ public sealed class BotsController(IMediator _mediator) : ControllerBase
         {
             return HandleError(result.Error);
         }
-
-        return Created(ApiRoutes.V1.Bots.Get.Replace("{botId}", result.Value.Value), null);
+        return CreatedAtAction(nameof(Get), new { botId = result.Value.Value }, new CreateBotResponse(result.Value.Value));
     }
 
     private ActionResult HandleError(Error error)

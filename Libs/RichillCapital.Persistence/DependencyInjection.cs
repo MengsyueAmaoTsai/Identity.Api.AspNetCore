@@ -21,7 +21,7 @@ public static class DependencyInjection
     {
         services.AddDbContext<MsSqlEfCoreDbContext>((serviceProvider, options) =>
         {
-            options.UseSqlServer("Server=127.0.0.1,1433;Database=test;User Id=SA;Password=Pa55w0rd!;TrustServerCertificate=true;", options =>
+            options.UseSqlServer("Server=127.0.0.1,1433;Database=richillcapital;User Id=SA;Password=Pa55w0rd!;TrustServerCertificate=true;", options =>
             {
                 options.EnableRetryOnFailure(3);
                 options.CommandTimeout(30);
