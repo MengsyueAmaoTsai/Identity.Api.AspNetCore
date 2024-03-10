@@ -144,10 +144,10 @@ public sealed class CreateBotTests(AcceptanceTestsWebApplicationFactory factory)
                 Name = NewName7,
             });
 
-        var (response, result) = await Client.GetAndDeserializeAsync<BotResponse>(createResponse.Headers.Location!.ToString());
+        var (response, result) = await Client.GetAndDeserializeAsync<BotResponse>(ApiRoutes.V1.Bots.Get.Replace("{botId}", NewId7));
 
         // Assert
-        createResponse.StatusCode.Should().Be(HttpStatusCode.Created);
+        createResponse.StatusCode.Should().Be(HttpStatusCode.OK);
 
         response.EnsureSuccessStatusCode();
 
