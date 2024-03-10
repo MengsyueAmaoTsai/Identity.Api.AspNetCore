@@ -1,9 +1,9 @@
 ﻿using MediatR;
-using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
 using RichillCapital.Contracts;
 using RichillCapital.Persistence;
 using RichillCapital.SharedKernel;
+using RichillCapital.UseCases.DeleteBot;
 using RichillCapital.UseCases.GetBotById;
 using RichillCapital.UseCases.ListBots;
 
@@ -55,6 +55,22 @@ public sealed class BotsController(IMediator _mediator) : ControllerBase
             result.Value.Platform);
 
         return Ok(botResponse);
+    }
+
+    [HttpDelete(ApiRoutes.V1.Bots.Delete)]
+    public async Task<IActionResult> Delete(
+        [FromRoute(Name = "botId")] string botId, CancellationToken cancellationToken = default)
+    {
+        var command = new DeleteBotCommand(botId);
+
+        var result = await _mediator.Send(command, cancellationToken);
+
+        if (result.IsFailure)
+        {
+            return HandleError(result.Error);
+        }
+
+        return NoContent();
     }
 
     private ActionResult HandleError(Error error)

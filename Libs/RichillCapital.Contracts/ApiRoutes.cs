@@ -14,6 +14,7 @@ public static class ApiRoutes
 
             public const string List = Base;
             public const string Get = $"{Base}/{{botId}}";
+            public const string Delete = $"{Base}/{{botId}}";
         }
     }
 }

@@ -1,17 +1,12 @@
 
 using System.Net;
-using System.Net.Http.Json;
 using FluentAssertions;
 using RichillCapital.Contracts;
 using RichillCapital.Identity.Api.AcceptanceTests;
 
-public sealed class GetByIdTests(AcceptanceTestsWebApplicationFactory factory) :
-    AcceptanceTests(factory)
+public sealed class GetBotByIdTests(AcceptanceTestsWebApplicationFactory factory) :
+    BotsAcceptanceTests(factory)
 {
-    protected static readonly string ValidId = "TV-BINANCE:ETHUSDT.P-M15-PL-0001";
-    protected static readonly string InvalidId = "TVBINANCE:ETHUSDT.PM15PL0001";
-    protected static readonly string NotFoundId = "TV-BINANCE:ETHUSDT.P-M15-PL-0000";
-
     [Fact]
     public async Task When_GivenInvalidId_Should_ReturnBadRequest()
     {
