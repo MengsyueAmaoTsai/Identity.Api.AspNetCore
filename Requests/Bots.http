@@ -1,6 +1,6 @@
-@RichillCapital.Identity.Api_HostAddress = http://localhost:5234
+@Localhost = https://127.0.0.1:10000
+@Route = /api/v1/bots
 
-GET {{RichillCapital.Identity.Api_HostAddress}}/weatherforecast/
+### List bots
+GET {{Localhost}}{{Route}}
 Accept: application/json
-
-###
