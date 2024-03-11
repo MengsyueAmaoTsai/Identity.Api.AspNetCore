@@ -9,7 +9,7 @@ public static class DependencyInjection
 {
     public static IServiceCollection AddPersistence(this IServiceCollection services)
     {
-        services.AddSpecification();
+        services.AddSpecifications();
 
         services.AddMsSql();
         services.AddDomainEventDispatcher();
@@ -59,7 +59,7 @@ public static class DependencyInjection
         return services;
     }
 
-    private static IServiceCollection AddSpecification(this IServiceCollection services)
+    private static IServiceCollection AddSpecifications(this IServiceCollection services)
     {
         services.AddScoped<IInMemorySpecificationEvaluator, InMemorySpecificationEvaluator>();
 

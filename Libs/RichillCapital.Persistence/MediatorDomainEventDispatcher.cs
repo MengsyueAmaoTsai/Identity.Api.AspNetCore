@@ -1,7 +1,8 @@
-
 using MediatR;
 using RichillCapital.Domain;
 using RichillCapital.SharedKernel;
+
+namespace RichillCapital.Persistence;
 
 public sealed class MediatorDomainEventDispatcher(IPublisher _publisher) :
     IDomainEventDispatcher
