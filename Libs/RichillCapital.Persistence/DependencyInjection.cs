@@ -31,19 +31,20 @@ public static class DependencyInjection
             options.EnableSensitiveDataLogging(true);
         });
 
-        services.AddRepository();
+        services.AddRepositories();
         services.AddUnitOfWork();
 
         return services;
     }
 
-    private static IServiceCollection AddRepository(this IServiceCollection services)
+    private static IServiceCollection AddRepositories(this IServiceCollection services)
     {
         services.AddScoped(typeof(IRepository<>), typeof(MsSqlEfCoreRepository<>));
         services.AddScoped(typeof(IReadOnlyRepository<>), typeof(MsSqlEfCoreRepository<>));
 
         return services;
     }
+
     private static IServiceCollection AddUnitOfWork(this IServiceCollection services)
     {
         services.AddScoped<IUnitOfWork>(serviceProvider =>
